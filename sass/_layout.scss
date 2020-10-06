@@ -1,0 +1,202 @@
+/*
+ * -------------------------------
+ * CONTAINER
+ * -------------------------------
+ * max-width
+ *  occupy 120rem of our viewport which is roughly
+ *  1200 px. Max width means if there is less than 1200px
+ *  for our viewport then occupy 100% of it. 
+ * 
+ * margin: 8rem auto
+ *  centers our container in the page. 
+ */
+.container {
+    max-width: 120rem;
+    margin: 8rem auto;
+    background-color: var(--color-grey-light-2);
+    box-shadow: var(--shadow-dark);
+    min-height: 50rem;
+
+    //When max-width is 1200px;
+    //And below we want to decrease the margin
+    //And let it fill the top and bottom.
+    //We don't need to center it anymore so 
+    //remove the top and bottom padding/ 
+    @media screen and (max-width: $bp-largest) {
+        margin: 0; 
+        //Since we're decreasing the font size
+        //The space it occupies will also decrease
+        //Meaning that there will be some background
+        //to take care of that so we need to occupy
+        //100% of the container
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+/*
+ * -------------------------------
+ * HEADER
+ * -------------------------------
+ * display: flex
+ *  since we want to style the child elements in row.
+ * 
+ * justify-content: space-between
+ *  justify is always parallel to the flow. 
+ *
+ * align-items: 
+ *  align items is always perpendicular to the flow. 
+ */
+
+.header {
+    font-size: 1.4rem;
+    height: 7rem;
+    background-color: #fff;
+    border-bottom: var(--color-grey-light-2);
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (max-width: $bp-smallest){
+        //Move search bar to it's own row. 
+        flex-wrap: wrap;
+        align-content: space-around;
+        height: 12rem;
+    }
+}
+
+/*
+ * -------------------------------
+ * CONTENT
+ * -------------------------------
+ * display:
+ *  remember that by default display: flex is
+ *  row so they will be side by side. 
+ */
+
+.content {
+    display: flex;
+
+    @media screen and (max-width: $bp-medium){
+        //Change the flow ordering of things.
+        flex-direction: column;
+    }
+}
+
+
+/*
+ * -------------------------------
+ * SIDEBAR
+ * -------------------------------
+ * flex: 0 0 18%
+ *  we don't want it to grow, don't want it to shrink
+ *  but we want the width which is defined in the 
+ *  FLEX-BASIS to always be 18% of the viewport width. 
+ *  So it is responsive and will resize. W
+ */
+
+.sidebar {
+    background-color: var(--color-grey-dark-1);
+    flex: 0 0 18%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; //Push one to top other to buttom
+}
+
+/*
+ * -------------------------------
+ * HOTEL VIEW
+ * -------------------------------
+ * flex: 1
+ *  we want the width to occupy the remaining length. 
+ */
+
+.hotel-view {
+    background-color: #fff;
+    // background: orangered;
+
+    //You want the content to define the 
+    //height of the box. 
+    // height: 80rem;
+    flex: 1;
+}
+
+/*
+ * -------------------------------
+ * Details
+ * -------------------------------
+ * Display: flex
+ *  we want the description and user
+ *  reviews to be side by side. 
+ */
+
+ .detail {
+    //So that the detail and the review 
+    //can inherit the font-size. 
+    font-size: 1.4rem;
+    display: flex;
+    padding: 4.5rem;
+    background-color: var(--color-grey-light-1);
+    border-bottom: var(--line);
+
+    //put them in the order that they'll happen
+    //So that they do not conflict. 
+    @media screen and (max-width: $bp-medium){
+        padding: 3rem;
+    }
+
+    @media screen and (max-width: $bp-small){
+        flex-direction: column
+    }
+ }
+
+ /*
+ * -------------------------------
+ * Description
+ * -------------------------------
+ * flex: 0 0 60%;
+ *  don't want it to grow, shrink, but want
+ *  it to take 60% of the width. Usually don't
+ *  want it to grow or shrink when using percentages
+ */
+
+ .description {
+    font-size: inherit;
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+    padding: 3rem;
+
+    flex: 0 0 60%;
+    margin-right: 4.5rem;
+
+    @media screen and (max-width: $bp-medium){
+        padding: 2rem;
+        margin-right: 3rem;
+    }
+
+    @media screen and (max-width: $bp-small){
+        margin-right: 0;
+        margin-bottom: 3rem;
+    }
+}
+
+/*
+ * -------------------------------
+ * User Reviews
+ * -------------------------------
+ * flex: 1
+ *  occupy the remaining space available. 
+ */
+
+ .user-reviews {
+    //test purposes
+    //background-color: yellowgreen;
+     flex: 1;
+     display: flex;
+     flex-direction: column;
+
+     //align-items is always
+     //default to stretch remember!
+     align-items: center;
+     font-size: inherit;
+}

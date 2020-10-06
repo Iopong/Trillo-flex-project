@@ -1,4 +1,5 @@
 # Trillo Flex Project
+![Overview Image](/img/overview.png)
 
 ## About
 * An application called Trillo that is built in order to comprehensively gain an understanding
